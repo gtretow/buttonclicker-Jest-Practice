@@ -4,15 +4,17 @@ import "./App.css";
 function App() {
   const [count, setCount] = React.useState(0);
 
+
   return (
     <div data-test="component-app">
       {/* removing data-test attributes */}
       <h1>App</h1>
       <h1 data-test="counter-display">
-        The Counter is currently: <span data-test="count">{count}</span>{" "}
+        The Counter is currently: <span data-test="count">{count}</span>
       </h1>
 
-     
+     <p data-test="alert" className="hidden">The counter can't go below zero</p>
+
       <button
       
         data-test="decrement-button"
