@@ -9,12 +9,18 @@ function App() {
       {/* removing data-test attributes */}
       <h1>App</h1>
       <h1 data-test="counter-display">
-        The Counter is currently$nbsp;<span data-test="count">{count}</span>{" "}
+        The Counter is currently: <span data-test="count">{count}</span>{" "}
       </h1>
       <button
+      
+        data-test="decrement-button"
+        onClick={() => setCount(count - 1)}
+      > decrement counter </button> 
+      <button
+      
         data-test="increment-button"
         onClick={() => setCount(count + 1)}
-      />
+      > Increment counter </button> 
     </div>
   );
 }
