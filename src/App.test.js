@@ -29,12 +29,16 @@ test("renders button", () => {
 
 test("renders counter display", () => {
   const wrapper = setup();
-  
-  const counterDisplay = findByTestAttr(wrapper, "counter-display" )
+
+  const counterDisplay = findByTestAttr(wrapper, "counter-display");
 
   expect(counterDisplay.length).toBe(1);
 });
 
-test("counter starts at 0", () => {});
+test("counter starts at 0", () => {
+  const wrapper = setup();
+  const count = findByTestAttr(wrapper, "count").text();
+  expect(count).toBe("0");
+});
 
 test("clickin on button increments counter display", () => {});
