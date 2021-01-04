@@ -3,7 +3,7 @@ import "./App.css";
 
 function App() {
   const [count, setCount] = React.useState(0);
-
+  const [error, setError] = React.useState(false);
 
   return (
     <div data-test="component-app">
@@ -12,19 +12,30 @@ function App() {
       <h1 data-test="counter-display">
         The Counter is currently: <span data-test="count">{count}</span>
       </h1>
+      {/* caso error seja true = visivel, caso contrário = className hidden (não há erro, a mensagem desaparece) */}
 
-     <p data-test="alert" className="hidden">The counter can't go below zero</p>
+      <div data-test="alert" className={`error ${error ? "" : "hidden"}`}>
+        The counter cannot go below 0
+      </div>
 
       <button
-      
         data-test="decrement-button"
-        onClick={() => setCount(count > 0? count - 1 : 0 )}
-      > decrement counter </button> 
+        onClick={() => (count > 0 ? setCount(count - 1) : setError(true))}
+      >
+        decrement counter
+      </button>
+
       <button
-      
         data-test="increment-button"
-        onClick={() => setCount(count + 1)}
-      > Increment counter </button> 
+        onClick={() => {
+          if (error) {
+            setError(false);
+          }
+          setCount(count + 1);
+        }}
+      >
+        Increment counter
+      </button>
     </div>
   );
 }

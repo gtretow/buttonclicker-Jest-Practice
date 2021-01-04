@@ -81,30 +81,32 @@ test("Dont let the counter go below zero", () => {
 
 test("display an error message saying the counter can't go below zero", () => {
   const wrapper = setup();
-  const alert = findByTestAttr(wrapper, "alert")
+  const alert = findByTestAttr(wrapper, "alert");
 
   const errorHiddenClass = alert.hasClass("hidden");
   expect(errorHiddenClass).toBe(true);
 });
 
-test("counter is 0 and decrement is clicked", () => {
+describe("counter is 0 and decrement is clicked", () => {
+  //wrapper desconstruido para ser usado com o beforeEach em todos os testes
+  let wrapper;
+  beforeEach(() => {
+    wrapper = setup();
+
+    // find button and click
+    const button = findByTestAttr(wrapper, "decrement-button");
+    button.simulate("click");
+  });
+
+  test("show error", () => {
+    const alert = findByTestAttr(wrapper, "alert");
+    const errorHiddenClass = alert.hasClass("hidden");
+    expect(errorHiddenClass).toBe(false);
+  });
+
+
 
 
   
-});
-
-test("Remove error when increment button is clicked", () => {
-  const wrapper = setup();
-
-  const count = findByTestAttr(wrapper, "count").text();
-  expect(count).toBe("0");
-
-  const buttondecre = findByTestAttr(wrapper, "decrement-button");
-  buttondecre.simulate("click");
-
-  const buttoninc = findByTestAttr(wrapper, "increment-button");
-  buttoninc.simulate("click");
-
-  const alert = findByTestAttr(wrapper, "alert").text();
-  expect(alert).toBeNull();
+  //end of describe
 });
