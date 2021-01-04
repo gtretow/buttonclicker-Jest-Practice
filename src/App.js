@@ -11,10 +11,12 @@ function App() {
       <h1 data-test="counter-display">
         The Counter is currently: <span data-test="count">{count}</span>{" "}
       </h1>
+
+     
       <button
       
         data-test="decrement-button"
-        onClick={() => setCount(count > 0? count - 1: 0)}
+        onClick={() => setCount(count > 0? count - 1 : 0 )}
       > decrement counter </button> 
       <button
       
