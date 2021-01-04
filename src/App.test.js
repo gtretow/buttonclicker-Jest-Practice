@@ -61,16 +61,31 @@ test("criar decrement button com text decrement button", () => {
 
 test("when clicked, decrement the counter ", () => {
   const wrapper = setup();
+  const buttonadd = findByTestAttr(wrapper, "increment-button");
+  buttonadd.simulate("click")
+  
+  const buttondecre = findByTestAttr(wrapper, "decrement-button");
+  buttondecre.simulate("click");
+  
+  const count = findByTestAttr(wrapper, "count").text();
+  expect(count).toBe("0");
+});
+
+test("Dont let the counter go below zero", () => {
+
+  //Dont let the counter go below zero
+  const wrapper = setup();
   const button = findByTestAttr(wrapper, "decrement-button");
   button.simulate("click");
   const count = findByTestAttr(wrapper, "count").text();
-  expect(count).toBe(-1);
+  expect(count).toBe("0");
+
+
+  //if the counter is at 0 and the decrement button is clicked:
+  //don't decrement the counter
+  //display an error message saying the counter can't go below zero
 });
 
-//Don't let the counter go below zero.
-//if the counter is at 0 and the decrement button is clicked:
-//don't decrement the counter
-//display an error message saying the counter can't go below zero
-
-//Remove error when increment button is clicked
-//If error is showing and increment button is clicked, clear the error.
+test("Remove error when increment button is clicked", () => {
+  //If error is showing and increment button is clicked, clear the error.
+});
