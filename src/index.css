@@ -20,4 +20,5 @@ code {
 .error {
   font-size: 150%;
   color: red;
+  background-color: black;
 }

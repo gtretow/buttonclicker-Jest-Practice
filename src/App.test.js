@@ -104,9 +104,16 @@ describe("counter is 0 and decrement is clicked", () => {
     expect(errorHiddenClass).toBe(false);
   });
 
+  test("clicking increment clears the error", () => {
+    // find and click the increment button
+    const ButtonInc = findByTestAttr(wrapper, "increment-button");
+    ButtonInc.simulate("click");
 
+    // check the class of the error message
+    const errorDiv = findByTestAttr(wrapper, "alert");
+    const errorHasHiddenClass = errorDiv.hasClass("hidden");
+    expect(errorHasHiddenClass).toBe(true);
+  });
 
-
-  
   //end of describe
 });
