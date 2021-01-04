@@ -59,7 +59,13 @@ test("criar decrement button com text decrement button", () => {
   expect(button.length).toBe(1);
 });
 
-test("when clicked, decrement the counter ", () => {});
+test("when clicked, decrement the counter ", () => {
+  const wrapper = setup();
+  const button = findByTestAttr(wrapper, "decrement-button");
+  button.simulate("click");
+  const count = findByTestAttr(wrapper, "count").text();
+  expect(count).toBe(-1);
+});
 
 //Don't let the counter go below zero.
 //if the counter is at 0 and the decrement button is clicked:
